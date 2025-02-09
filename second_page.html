@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Countdown</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #fce4ec;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #e91e63;
+        }
+        .profile {
+            width: 100px; /* Bigger profile picture */
+            height: 100px;
+            border-radius: 50%;
+            display: block;
+            margin: 15px auto;
+            border: 4px solid #f06292;
+        }
+        .question {
+            background: #f06292;
+            color: white;
+            padding: 12px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 18px;
+        }
+        .countdown {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #e91e63;
+        }
+        .timer {
+            display: flex;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #e91e63;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        .timer div {
+            text-align: center;
+        }
+        .button {
+            margin-top: 25px;
+            background: #f06292;
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .button:hover {
+            background: #d81b60;
+        }
+    </style>
+</head>
+<body>
+    <h2>Happy Valentine's Day</h2>
+    <img src="Photos/Profile.jpg" class="profile" alt="Profile">  <!-- Ensure the image is in the "photos" folder -->
+    
+    <div class="question">How long have we been together? ❤️</div>
+    
+    <div class="countdown">
+        <span id="years">0</span> YEARS <span id="months">0</span> MONTHS
+    </div>
+    
+    <div class="timer">
+        <div><span id="days">0</span><br>Days</div>
+        <div><span id="hours">0</span><br>Hrs</div>
+        <div><span id="minutes">0</span><br>Mins</div>
+        <div><span id="seconds">0</span><br>Secs</div>
+    </div>
+    
+    <button class="button" id="nextButton">🔒 Yen & Game</button>
+
+    <script>
+        document.getElementById("nextButton").addEventListener("click", function() {
+            window.location.href = "Third_page.html"; // Redirects to third page
+        });
+
+        function countdown(startDate) {
+            let start = new Date(startDate);
+            let now = new Date();
+            let diff = now - start;
+
+            let years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+            let months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+            let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+
+            document.getElementById("years").innerText = years;
+            document.getElementById("months").innerText = months;
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+        }
+
+        setInterval(() => countdown("2022-06-01"), 1000); // Change to your actual start date
+    </script>
+</body>
+</html>

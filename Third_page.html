@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You & Me ❤️</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #fce4ec;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            font-size: 22px;
+            color: #e91e63;
+            margin: 15px 0;
+        }
+        .gallery-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            overflow-y: scroll;
+            height: 70vh;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 5px;
+            padding: 10px;
+        }
+        .gallery img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+        .message {
+            font-size: 16px;
+            color: #e91e63;
+            margin: 10px 0;
+        }
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox img {
+            width: 90%;
+            max-width: 350px;
+            border-radius: 10px;
+        }
+        .lightbox.show {
+            visibility: visible;
+            opacity: 1;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: white;
+            font-size: 25px;
+            cursor: pointer;
+        }
+        .message-button {
+            margin-top: 20px;
+            background: #f06292;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .message-button:active {
+            background: #e91e63;
+        }
+    </style>
+</head>
+<body>
+    <h2>You & Me 💕</h2>
+    <div class="gallery-container">
+        <div class="gallery" id="gallery"></div>
+    </div>
+    <div class="message">I'm so lucky to have you 😊</div>
+    
+    <button class="message-button" onclick="goToNextPage()">💌 Message</button>
+
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">×</span>
+        <img id="lightbox-img" src="" alt="Enlarged Photo">
+    </div>
+
+    <script>
+        const gallery = document.getElementById("gallery");
+
+        for (let i = 1; i <= 100; i++) {
+            let img = document.createElement("img");
+            img.src = `photos/photo${i}.jpg`; 
+            img.alt = `Photo ${i}`;
+            img.onclick = () => openLightbox(img.src);
+            gallery.appendChild(img);
+        }
+
+        function openLightbox(src) {
+            document.getElementById("lightbox-img").src = src;
+            document.getElementById("lightbox").classList.add("show");
+        }
+
+        function closeLightbox() {
+            document.getElementById("lightbox").classList.remove("show");
+        }
+
+        function goToNextPage() {
+            window.location.href = "Fourth_page.html";
+        }
+    </script>
+</body>
+</html>

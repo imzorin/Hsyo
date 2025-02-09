@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome ❤️</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #fce4ec;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        .input-box {
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 10px;
+            border: 2px solid #f06292;
+            outline: none;
+        }
+        .button {
+            margin-top: 20px;
+            background: #f06292;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .button:active {
+            background: #e91e63;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter the Secret Code 💖</h2>
+        <input type="password" id="password" class="input-box" placeholder="Enter Code">
+        <br>
+        <button class="button" onclick="checkPassword()">OK</button>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const correctPassword = "1111"; // Change to your actual password
+            const input = document.getElementById("password").value;
+            if (input === correctPassword) {
+                window.location.href = "second_page.html"; // Redirect to second page
+            } else {
+                alert("Wrong password! Try again.");
+            }
+        }
+    </script>
+</body>
+</html>
